@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+<div id="contents" class="card" style="width: 25rem;">
+    <div class="card-body">
+    <div id="wait" style="display:none;">  
+        <a class="intro-banner-vdo-play-btn pinkBg">
+        <i class="glyphicon glyphicon-play whiteText" aria-hidden="true"></i>
+        <span class="ripple pinkBg"></span>
+        <span class="ripple pinkBg"></span>
+        <span class="ripple pinkBg"></span>
+        </a>
+    </div>
+    <div id="form">
+        <form method="POST" action="" enctype="multipart/form-data" id="form">
+            <div class="form-group">
+                <label for="pesan">Input Pesan</label>
+                <input type="string" class="form-control" name="pesan" placeholder="Pesan">
+            </div>
+            <div class="form-group">
+                <label for="kunci">Input Kunci</label>
+                <input type="string" class="form-control" name="kunci" placeholder="Kunci">
+            </div>
+            <div class="form-group">
+                <label for="media">Media Kover</label>
+                <textarea class="form-control" name="media" rows="3" placeholder="Media Kover"></textarea>
+                
+            </div>
+            <button type="submit" class="btn btn-primary" id="submit" name="submit">Submit</button>
+        </form>
+    </div>
+</div>
+</div>
+
+{% endblock content %}

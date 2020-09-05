@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+<!-- {% extends "layout.html" %} -->
 {% block content %}
 <script src="{{ url_for('static', filename='chart.js/Chart.min.js') }}"></script>
 <div class="col-xl-5 col-lg-5">
@@ -236,7 +236,7 @@ var chart1 = new Chart(ctx, {
     <div class="card shadow mb-4">
         <!-- Card Header - Dropdown -->
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-        <h6 class="m-0 font-weight-bold text-primary">Content</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Vigenere</h6>
         
         </div>
         <!-- Card Body -->
@@ -246,10 +246,19 @@ var chart1 = new Chart(ctx, {
                     <td>Plaintext   :   {{plaintext}}</td>
                      
                 </tr>
+				<tr>
+                    <td>Protein-Plaintext       :   {{plaintex_protein}}</td>
+                   
+                </tr>
+				<tr>
+                    <td>Kunci       :   {{kunci}}</td>
+                   
+                </tr>
                 <tr>
                     <td>Playfair    :   {{ciphertext[0]}}</td>
                     
                 </tr>
+				
                 <tr>
                     <td>Porta       :   {{ciphertext[1]}}</td>
                    
@@ -266,5 +275,56 @@ var chart1 = new Chart(ctx, {
         </div>
     </div>
 </div>
+
+<div class="col-xl-5 col-lg-5">
+    <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">Playfair</h6>
         
-{% endblock content %}
+        </div>
+        <!-- Card Body -->
+        <div class="card-body">
+            <table>
+                <tr>
+                    <td>Plaintext   :   {{plaintext}}</td>
+                     
+                </tr>
+				<tr>
+                    <td>Protein-Plaintext       :   {{plaintex_protein}}</td>
+                   
+                </tr>
+				<tr>
+                    <td>Kunci       :   {{kunci}}</td>
+                   
+                </tr>
+                <tr>
+                    <td>Playfair    :   {{ciphertext[0]}}</td>
+                    
+                </tr>
+				<tr>
+                    <td>
+						<table>
+						{% for i in range(5) %}
+							<tr>
+							{% for j in range(5) %}
+							
+								<td>
+									
+								</td>
+							
+								
+							{% endfor %}
+							</tr>
+						{% endfor %}
+						</table>
+					</td>
+                    
+                </tr>
+				
+            </table>
+        </div>
+    </div>
+</div>
+                
+<!-- {% endblock content %} -->

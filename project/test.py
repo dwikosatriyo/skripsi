@@ -19,8 +19,19 @@ def encrypt_dna (message, key, algorithm):
         cipher = Vigenere()
     else :
         return None
+    result = cipher.encrypt(message.lower(), key.lower())
+    return result
+def encrypt_dna_time (message, key, algorithm):
+    if (algorithm==1):
+        cipher = playfair
+    elif(algorithm==2):
+        cipher = Porta()
+    elif (algorithm==3):
+        cipher = Vigenere()
+    else :
+        return None
     start = timeit.default_timer()
-    a = dna.encode(message)
+    a = dna.string_to_binary(message)
     a += "0"*(6-(len(a)%6))
     a = dna.binary_to_DNA(a)
     #melakukan encode dari biner ke dna sequence

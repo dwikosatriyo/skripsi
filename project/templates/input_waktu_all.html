@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+
+<div id="contents" class="container-xl">
+    <div id="wait" style="display:none;">  
+        <a class="intro-banner-vdo-play-btn pinkBg">
+        <i class="glyphicon glyphicon-play whiteText" aria-hidden="true"></i>
+        <span class="ripple pinkBg"></span>
+        <span class="ripple pinkBg"></span>
+        <span class="ripple pinkBg"></span>
+        </a>
+    </div>
+    <form method="POST" action="" enctype="multipart/form-data">
+        <div class="form-group">
+            <input type="string" style="display:none" class="form-control" name="pesan" placeholder="pesan">
+        </div>
+        <button type="submit" class="btn btn-primary" id="submit" name="submit">Submit</button>
+    </form>
+    
+
+</div>
+    
+<script>
+$(document).ready(function(){
+    $('#submit').click(function (){
+        $(document).ajaxStart(function(){
+        $("#submit").css("display", "none");
+        $("#wait").css("display", "block");
+        });
+    // Adding loading GIF
+    // Ajax Request
+        $.ajax({
+        type: "POST",
+        // dataType: "json",
+        url: "/enc_waktu_all",
+        success: function (loader) {
+        // This replace the retrieved data to the div after the setTimeOut function
+                setTimeout(function () {
+                $('#contents').html(loader);
+                }, 300000);
+            }
+        });
+    });
+});
+    </script>
+{% endblock content %}

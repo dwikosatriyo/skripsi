@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div id="contents">
+    <div id="wait" style="display:none;">  
+        <a class="intro-banner-vdo-play-btn pinkBg">
+        <i class="glyphicon glyphicon-play whiteText" aria-hidden="true"></i>
+        <span class="ripple pinkBg"></span>
+        <span class="ripple pinkBg"></span>
+        <span class="ripple pinkBg"></span>
+        </a>
+    </div>
+    <div id ="form">
+      <form method="POST" action="steg_waktu_text_method" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="kunci">Input Pesan</label>
+          <input type="string" class="form-control" name="pesan" placeholder="Input Pesan">
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">input Metode</label>
+          <select class="form-control" name="metode">
+            <option value=1>Subtitution</option>
+            <option value=2>Insertion</option>
+            <option value=3>Complementary Rule</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="pesan">Input DNA Reference</label>
+          <input type="file" class="form-control-file" name="reference">
+        </div>
+        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+      </form>
+    </div>
+</div>
+<!--   
+<script>
+    $(document).ready(function(){
+    $('#submit').click(function (){
+        $(document).ajaxStart(function(){
+        $("#form").css("display", "none");
+        $("#wait").css("display", "block");
+        });
+    // Adding loading GIF
+    // Ajax Request
+        $.ajax({
+      type: "POST",
+      // dataType: "json",
+      url: "/enc_waktu_file",
+      success: function (loader) {
+        // This replace the retrieved data to the div after the setTimeOut function
+              setTimeout(function () {
+                $('#contents').html(loader);
+              }, 300000);
+          }
+        });
+    });
+});
+</script> -->
+{% endblock content %}

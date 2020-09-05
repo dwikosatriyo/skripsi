@@ -1,0 +1,251 @@
+<!-- {% extends "layout.html" %} -->
+{% block content %}
+<script src="{{ url_for('static', filename='chart.js/Chart.min.js') }}"></script>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <a class="nav-link active" id="encoding-tab" data-toggle="tab" href="#encoding" role="tab" aria-controls="encoding" aria-selected="true">Encoding</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="decoding-tab" data-toggle="tab" href="#decoding" role="tab" aria-controls="decoding" aria-selected="false">Decoding</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="encoding" role="tabpanel" aria-labelledby="encoding-tab">
+    
+<div class="col-xl-12 col-lg-5">
+  <div class="card shadow mb-4">
+    <div class="card-header">
+      Input
+    </div>
+    <div class="card-header py-3 d-flex flex-row  justify-content-between">
+      <div class="card" style="width: 35rem;  ">
+        <div class="card-header ">
+          Enkripsi
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Pesan</h5>
+          <p class="card-text">{{pesan}}</p>
+          <h5 class="card-title">Kunci</h5>
+          <p class="card-text">{{kunci}}</p>
+        </div>
+      </div>
+        <div class="card" style="width: 40rem;  ">
+          <div class="card-header ">
+            Dekripsi dan Ekstraksi
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Kunci</h5>
+          <p class="card-text">{{media}}</p>
+          <h5 class="card-title">Media Kover DNA</h5>
+          <p class="card-text">{{media_dna}}</p>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+<div class="col-xl-12 col-lg-5">
+    <div class="card shadow mb-4">
+      <div class="card-header">
+        Pre Processing (<i>Plaintext</i> ke Bentuk <i>DNA Sequence</i>)
+      </div>
+      <!-- Card Header - Dropdown -->
+      <div class="card-header py-3 d-flex flex-row justify-content-between">
+        <div class="card" style="width: 35rem;  ">
+          <div class="card-header">
+            Plaintext
+          </div>
+          <div class="card-body">
+            
+            <p class="card-text">{{pesan}}</p>
+            
+          </div>
+        </div>
+        <div class="card"  style="width: 35rem;  ">
+          <div class="card-header">
+            Bentuk ASCII
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{pesan_ascii}}</p>
+          </div>
+        </div>
+        <div class="card"  style="width: 35rem;  ">
+          <div class="card-header">
+            Bentuk Biner
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{pesan_binary}}</p>
+          </div>
+        </div>
+        <div class="card"  style="width: 35rem;  ">
+          <div class="card-header">
+            Bentuk DNA
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{pesan_dna}}</p>
+          </div>
+        </div>
+        <div class="card"  style="width: 35rem;  ">
+          <div class="card-header">
+            Bentuk Protein
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{pesan_protein}}</p>
+          </div>
+        </div>
+      </div>
+      <!-- Card Body -->
+    </div>
+</div>
+
+<div class="col-xl-12 col-lg-5">
+  <div class="card shadow mb-4">
+    <div class="card-header">
+      Proses Enkripsi
+    </div>
+    <div class="card-header py-3 d-flex flex-row  justify-content-between">
+      <div class="card" style="width: 25rem;  ">
+        <div class="card-header">
+          Enkripsi Playfair
+        </div>
+        <div class="card-body">
+          <p class="card-text">Plaintext : {{pesan_protein.lower()}}</p>
+          <p class="card-text">Kunci : {{kunci}}</p>
+        </div>
+      </div>
+      <div class="card" style="width: 25rem;  ">
+        <div class="card-header">
+          Tabel Kunci
+        </div>
+        <div class="card-body">
+         
+          <p class="card-text">Plaintext : {{tabel_kunci}}</p>
+        </div>
+      </div>
+        <div class="card" style="width: 25rem;  ">
+          <div class="card-header ">
+            Hasil Enkripsi
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{hasil_enkripsi}}</p>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-xl-12 col-lg-5">
+  <div class="card shadow mb-4">
+    <div class="card-header">
+      Proses Steganografi
+    </div>
+    <div class="card-header py-3 d-flex flex-row  justify-content-between">
+      <div class="card" style="width: 15rem;  ">
+        <div class="card-header ">
+          Hasil Enkripsi ke Bentuk Biner
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{input_binary}}</p>
+        </div>
+      </div>
+      <div class="card" style="width: 15rem;  ">
+        <div class="card-header ">
+          Media Kover
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{media_dna}}</p>
+        </div>
+      </div>
+        <div class="card" style="width: 15rem;  ">
+          <div class="card-header ">
+            Random Number
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{random_number}}</p>
+          </div>
+      </div>
+        <div class="card" style="width: 15rem;  ">
+          <div class="card-header ">
+            Hasil Steganografi
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{hasil_steganografi}}</p>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+  <div class="tab-pane fade" id="decoding" role="tabpanel" aria-labelledby="decoding-tab">
+  
+    <div class="col-xl-12 col-lg-5">
+      <div class="card shadow mb-4">
+        <div class="card-header">
+          Input
+        </div>
+        <div class="card-header py-3 d-flex flex-row  justify-content-between">
+          <div class="card" style="width: 35rem;  ">
+            <div class="card-header ">
+              Stego-DNA
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Media yang Sudah Disisipi Pesan Rahasia :</h5>
+              <p class="card-text">{{hasil_steganografi}}</p>
+              <h5 class="card-title">Media DNA</h5>
+              <p class="card-text">{{media_dna}}</p>
+            </div>
+          </div>
+            <div class="card" style="width: 40rem;  ">
+              <div class="card-header ">
+                Dekripsi
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Kunci :</h5>
+              <p class="card-text">{{kunci}}</p>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-xl-12 col-lg-5">
+      <div class="card shadow mb-4">
+        <div class="card-header">
+          Proses Ekstraksi
+        </div>
+        <div class="card-header py-3 d-flex flex-row  justify-content-between">
+          <div class="card" style="width: 35rem;  ">
+            <div class="card-header ">
+              Stego-DNA
+            </div>
+            <div class="card-body">
+              <p class="card-text">{{hasil_steganografi}}</p>
+            </div>
+          </div>
+            <div class="card" style="width: 40rem;  ">
+              <div class="card-header ">
+                Media DNA / <i>DNA Reference</i>
+              </div>
+              <div class="card-body">
+              <p class="card-text">{{media_dna}}</p>
+              </div>
+            </div>
+            <div class="card" style="width: 40rem;  ">
+              <div class="card-header ">
+                Hasil Ekstraksi
+              </div>
+              <div class="card-body">
+              <p class="card-text">{{hasil_ekstraksi}}</p>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    
+
+  </div>
+</div>
+        
+
+
+<!-- {% endblock content %} -->

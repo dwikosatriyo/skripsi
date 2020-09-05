@@ -1,4 +1,13 @@
-def encode(string):
+def string_to_ascii(string):
+    if not isinstance(string, bytes):
+        ord_str = [ord(l) for l in string]
+    else:
+        ord_str = [int(x) for x in string]
+    return ord_str
+def ascii_to_binary(input):
+    bin_str = "".join([bin(x)[2:].zfill(8) for x in input])
+    return bin_str
+def string_to_binary(string):
     if not isinstance(string, bytes):
         ord_str = [ord(l) for l in string]
     else:
@@ -6,7 +15,7 @@ def encode(string):
     bin_str = "".join([bin(x)[2:].zfill(8) for x in ord_str])
     #[2:].zfill(8) untuk menghilangkan 0b
     return bin_str
-def decode(binary):
+def binary_to_string(binary):
     c = int(binary, base =2)
     string = c.to_bytes((c.bit_length() + 7) // 8, 'big').decode()
     return string
@@ -48,5 +57,9 @@ def DNA_to_binary (seq):
             binaryarray.append('11')
     binary = "".join(binaryarray)
     return binary
-
+def string_to_DNA (string):
+    binary = string_to_binary(string)
+    dna = binary_to_DNA (binary)
+    return dna
+    
     
